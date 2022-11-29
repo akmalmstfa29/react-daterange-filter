@@ -1,11 +1,8 @@
-import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
-const { Header, Content, Sider } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
+import React from 'react';
+import Header from './components/Header';
+const { Content, Sider } = Layout;
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
   const key = String(index + 1);
   return {
@@ -21,14 +18,12 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
     }),
   };
 });
+
 const App = () => (
   <Layout>
-    <Header className="header">
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
-    </Header>
+    <Header className="header" />
     <Layout className='layout'>
-      <Sider width={200} className="site-layout-background">
+      <Sider collapsible collapsed={true} trigger={null} className="site-layout-background">
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
@@ -45,19 +40,10 @@ const App = () => (
           padding: '0 24px 24px',
         }}
       >
-        <Breadcrumb
-          style={{
-            margin: '16px 0',
-          }}
-        >
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
         <Content
           className="site-layout-background"
           style={{
-            padding: 24,
+            padding: '30px 24px',
             margin: 0,
             minHeight: 280,
           }}
